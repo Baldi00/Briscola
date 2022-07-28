@@ -15,18 +15,7 @@ public class Bank {
     }
 
     public int getResultPoints() {
-        int points = 0;
-        for(Card card : cards) {
-            points += switch (card.cardName()) {
-                case JACK -> 2;
-                case HORSE -> 3;
-                case KING -> 4;
-                case THREE -> 10;
-                case ACE -> 11;
-                default -> 0;
-            };
-        }
-        return points;
+        return GameManager.calculatePoints(cards);
     }
 
     public List<Card> getCards() {

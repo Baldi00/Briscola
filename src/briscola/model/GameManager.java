@@ -133,7 +133,57 @@ public class GameManager {
     // CPU CARD SELECTION
 
     private Card selectBestCardToPlay(List<Card> hand) {
-        return hand.get(0);
+        if(hand.size() == 1){
+            return hand.get(0);
+        }
+
+        int [] points = new int[hand.size()];
+
+        if(fieldCard != null) {
+            List<Card> toPick = new ArrayList<>(2);
+            toPick.add(fieldCard);
+            for (int i = 0; i < hand.size(); i++) {
+                Card current = hand.get(i);
+                if ((current.seed().equals(fieldCard.seed()) &&
+                        (current.cardName().equals(CardName.ACE) || current.cardName().equals(CardName.THREE) ||
+                                current.cardName().getValue() > fieldCard.cardName().getValue()))
+                        || (current.seed().equals(trumpSeed) && !fieldCard.seed().equals(trumpSeed))) {
+                    toPick.add(current);
+                    points[i] = calculatePoints(toPick);
+                    toPick.remove(current);
+                } else {
+                    points[i] -= getCardPoints(current);
+                    if(current.seed().equals(trumpSeed)){
+                        points[i] -= 3;
+                    }
+                    points[i] -= current.cardName().getValue()/2;
+                }
+            }
+        } else {
+            for(int i=0; i<hand.size(); i++){
+                Card current = hand.get(i);
+                points[i] -= getCardPoints(current);
+                if(current.seed().equals(trumpSeed)){
+                    points[i] -= 3;
+                }
+                points[i] -= current.cardName().getValue()/2;
+            }
+        }
+
+        for(int i = 0; i < hand.size(); i++){
+            System.out.println(hand.get(i) + ": " + points[i]);
+        }
+        System.out.println();
+
+        int max = points[0];
+        int maxPosition = 0;
+        for (int i = 1; i < hand.size(); i++) {
+            if (points[i] > max) {
+                max = points[i];
+                maxPosition = i;
+            }
+        }
+        return hand.get(maxPosition);
     }
 
     // GAME OVER AND MATCH RESULTS
@@ -171,6 +221,25 @@ public class GameManager {
         List<Card> sorted = new ArrayList<>(cards);
         Collections.sort(sorted);
         return sorted;
+    }
+
+    public static int calculatePoints(List<Card> cards){
+        int points = 0;
+        for(Card card : cards) {
+            points += getCardPoints(card);
+        }
+        return points;
+    }
+
+    public static int getCardPoints(Card card){
+        return switch (card.cardName()) {
+            case JACK -> 2;
+            case HORSE -> 3;
+            case KING -> 4;
+            case THREE -> 10;
+            case ACE -> 11;
+            default -> 0;
+        };
     }
 
     // GETTERS
