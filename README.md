@@ -1,6 +1,6 @@
 # Scopa d'Asso/Asso Pigliatutto
 
-Gioco di carte di scopa d'asso. Variante insegnatami da mio nonno e mio padre.<br>
-Scarica l'ultima versione <a href="https://github.com/Baldi00/ScopaDAsso/releases/download/v1.0-20220628/ScopaDAsso.jar">qui</a>
+Gioco di carte di brisola. Variante insegnatami da mio nonno e mio padre.<br>
+Scarica l'ultima versione <a href="https://github.com/Baldi00/Briscola/releases/download/v1.0-20220728/Briscola.jar">qui</a>
 
 <img src="img.jpg">

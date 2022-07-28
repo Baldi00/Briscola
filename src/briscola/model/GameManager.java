@@ -170,11 +170,6 @@ public class GameManager {
             }
         }
 
-        for(int i = 0; i < hand.size(); i++){
-            System.out.println(hand.get(i) + ": " + points[i]);
-        }
-        System.out.println();
-
         int max = points[0];
         int maxPosition = 0;
         for (int i = 1; i < hand.size(); i++) {

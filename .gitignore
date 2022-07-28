@@ -9,3 +9,5 @@
 out/
 resources/META-INF/MANIFEST.MF
 .idea/artifacts/ScopaDAsso_jar.xml
+src/META-INF/MANIFEST.MF
+.idea/artifacts/Briscola_jar.xml
