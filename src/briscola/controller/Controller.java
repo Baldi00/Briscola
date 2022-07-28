@@ -24,15 +24,15 @@ public class Controller {
 
     public void updateView() {
         view.setHumanCards(gameManager.getHumanPlayer().getHand());
-        view.setHumanBank(gameManager.getHumanPlayer().getBankWithoutMop(), gameManager.getHumanPlayer().getMop());
-        view.setHumanAdditionalPoints(gameManager.getHumanPlayer().getAdditionalPoints());
+        view.setHumanBank(gameManager.getHumanPlayer().getBankCards());
         view.setHumanGamePoints(gameManager.getHumanPlayer().getGamePoints());
-        view.setCpuCards(gameManager.getCpuPlayer().getHand(), gameManager.getCpuPlayer().getLastPlayedCard(), gameManager.hasCpuPlayedCard());
-        view.setCpuBank(gameManager.getCpuPlayer().getBankWithoutMop(), gameManager.getCpuPlayer().getMop());
-        view.setCpuAdditionalPoints(gameManager.getCpuPlayer().getAdditionalPoints());
+        view.setCpuCards(gameManager.getCpuPlayer().getHand(), gameManager.getCpuPlayer().getLastPlayedCard(), gameManager.hasCpuSelectedCard());
+        view.setCpuBank(gameManager.getCpuPlayer().getBankCards());
         view.setCpuGamePoints(gameManager.getCpuPlayer().getGamePoints());
         view.setDeck(gameManager.getDeck());
-        view.setField(gameManager.getField());
+        view.setFieldCard(gameManager.getFieldCard());
+        view.setTrump(gameManager.getTrump());
+        view.setTurn(gameManager.getCurrentPlayer() == gameManager.getHumanPlayer());
         updateHumanPlayerCardClickListeners();
     }
 
@@ -58,28 +58,11 @@ public class Controller {
         ResultsView resultsView = new ResultsView();
         Player humanPlayer = gameManager.getHumanPlayer();
         Player cpuPlayer = gameManager.getCpuPlayer();
-        resultsView.setHumanPoints(
-                humanPlayer.getRoundPoints(),
-                humanPlayer.getBank().searchForBeautifulKing(),
-                humanPlayer.getBank().searchForBeautifulSeven(),
-                humanPlayer.getBank().searchForCoinsMajority(),
-                humanPlayer.getBank().searchForPrimiera(),
-                humanPlayer.getBank().searchForCardsNumberMajority(),
-                humanPlayer.getMop(),
-                humanPlayer.getAdditionalPoints());
-        resultsView.setHumanCards(humanPlayer.getBankWithoutMop());
-        resultsView.setHumanMops(humanPlayer.getMop());
-        resultsView.setCpuPoints(
-                cpuPlayer.getRoundPoints(),
-                cpuPlayer.getBank().searchForBeautifulKing(),
-                cpuPlayer.getBank().searchForBeautifulSeven(),
-                cpuPlayer.getBank().searchForCoinsMajority(),
-                cpuPlayer.getBank().searchForPrimiera(),
-                cpuPlayer.getBank().searchForCardsNumberMajority(),
-                cpuPlayer.getMop(),
-                cpuPlayer.getAdditionalPoints());
-        resultsView.setCpuCards(cpuPlayer.getBankWithoutMop());
-        resultsView.setCpuMops(cpuPlayer.getMop());
+        resultsView.setHumanPoints(humanPlayer.getRoundPoints());
+        resultsView.setHumanCards(humanPlayer.getBankCards());
+        resultsView.setCpuPoints(cpuPlayer.getRoundPoints());
+        resultsView.setCpuCards(cpuPlayer.getBankCards());
+        resultsView.setWinner(humanPlayer.getRoundPoints(), cpuPlayer.getRoundPoints());
     }
 
     public void setActionButton(String name, String text, boolean enabled){

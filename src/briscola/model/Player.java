@@ -6,7 +6,6 @@ import java.util.List;
 public class Player {
     private List<Card> hand;
     private Bank bank;
-    private List<Integer> additionalPoints;
     private Card lastPlayedCard;
     private int roundPoints;
     private int gamePoints;
@@ -14,7 +13,6 @@ public class Player {
     public Player() {
         hand = new ArrayList<>();
         bank = new Bank();
-        additionalPoints = new ArrayList<>();
         roundPoints = 0;
         gamePoints = 0;
     }
@@ -63,34 +61,25 @@ public class Player {
         return bank;
     }
 
-    public List<Integer> getAdditionalPoints() {
-        return additionalPoints;
-    }
-
-    public void addAdditionalPoints(int points) {
-        additionalPoints.add(points);
-    }
-
-    public int getTotalAdditionalPoints() {
-        int sum = 0;
-        for(Integer i : additionalPoints){
-            sum += i;
-        }
-        return sum;
+    public List<Card> getBankCards() {
+        return bank.getCards();
     }
 
     public void clear() {
         hand = new ArrayList<>();
         bank = new Bank();
-        additionalPoints = new ArrayList<>();
         roundPoints = 0;
     }
 
-    public void addGamePoints(int points){
-        gamePoints += points;
+    public void addGamePoint(){
+        gamePoints++;
     }
 
     public int getGamePoints() {
         return gamePoints;
+    }
+
+    public boolean hasWon() {
+        return roundPoints > 60;
     }
 }

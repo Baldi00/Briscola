@@ -28,4 +28,8 @@ public class Bank {
         }
         return points;
     }
+
+    public List<Card> getCards() {
+        return cards;
+    }
 }

@@ -19,30 +19,37 @@ public class CardClickListener implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if (!gameManager.hasCpuPlayedCard()) {
+        if (gameManager.getCurrentPlayer() == gameManager.getHumanPlayer()) {
             gameManager.humanPlayerPlayCard(card);
-
-            if (gameManager.isTurnOver()) {
-                if (gameManager.isGameOver()) {
-                    gameManager.giveLastFieldCardsToLastPlayerWhoPicked();
-                    gameManager.calculateMatchResults();
-                    controller.showMatchResults();
-                } else {
-                    gameManager.giveThreeCardsToPlayers();
-                    gameManager.calculateAdditionalPoints();
-                    if(gameManager.getStartingPlayer() == gameManager.getCpuPlayer()) {
-                        gameManager.cpuPlayerPlayCard();
-                    }
-                }
-            } else {
-                gameManager.cpuPlayerPlayCard();
-            }
-
             controller.updateView();
 
-            if(gameManager.isLastTurnOfTheGame()){
+            System.out.println("CARDCLICK: " + gameManager.isGameOver());
+
+            if(gameManager.isGameOver()){
+                gameManager.calculateMatchResults();
+                controller.showMatchResults();
                 controller.setActionButton("nextGame", "Prossima Partita", true);
             }
+
+//            if (gameManager.isTurnOver()) {
+//                if (gameManager.isGameOver()) {
+//                    gameManager.giveLastFieldCardsToLastPlayerWhoPicked();
+//                    gameManager.calculateMatchResults();
+//                    controller.showMatchResults();
+//                } else {
+//                    gameManager.giveThreeCardsToPlayers();
+//                    if(gameManager.getCurrentPlayer() == gameManager.getCpuPlayer()) {
+//                        gameManager.cpuPlayerPlayCard();
+//                    }
+//                }
+//            } else {
+//                gameManager.cpuPlayerPlayCard();
+//            }
+
+
+//            if(gameManager.isLastTurnOfTheGame()){
+//                controller.setActionButton("nextGame", "Prossima Partita", true);
+//            }
         }
     }
 
