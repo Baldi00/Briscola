@@ -12,12 +12,14 @@ public class GameManager {
     private boolean hasCpuSelectedCard;
     private Player currentPlayer;
     private Player oppositeToCurrentPlayer;
+    private Player firstPlayer;
 
     public GameManager() {
         humanPlayer = new Player();
         cpuPlayer = new Player();
         deck = new Deck();
         hasCpuSelectedCard = false;
+        firstPlayer = humanPlayer;
         currentPlayer = humanPlayer;
         oppositeToCurrentPlayer = cpuPlayer;
     }
@@ -26,6 +28,10 @@ public class GameManager {
         deck.shuffleDeck();
         giveThreeCardsToPlayers();
         extractTrump();
+
+        if(firstPlayer == cpuPlayer) {
+            cpuPlayerSelectNextCard();
+        }
     }
 
     private void extractTrump() {
@@ -154,6 +160,9 @@ public class GameManager {
         cpuPlayer.clear();
         deck = new Deck();
 
+        firstPlayer = firstPlayer == humanPlayer ? cpuPlayer : humanPlayer;
+        currentPlayer = firstPlayer;
+        oppositeToCurrentPlayer = currentPlayer == humanPlayer ? cpuPlayer : humanPlayer;
     }
 
     // UTILS
