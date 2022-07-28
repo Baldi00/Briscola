@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ScopaDAsso.iml" filepath="$PROJECT_DIR$/ScopaDAsso.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Briscola.iml" filepath="$PROJECT_DIR$/Briscola.iml" />
     </modules>
   </component>
 </project>

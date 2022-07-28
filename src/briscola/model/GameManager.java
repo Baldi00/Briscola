@@ -1,4 +1,4 @@
-package scopadasso.model;
+package briscola.model;
 
 import java.util.*;
 
@@ -32,13 +32,6 @@ public class GameManager {
     }
 
     private void prepareField() {
-        for (int i = 0; i < 4; i++)
-            field.add(deck.extract());
-
-        if (cardByNameOccurs(field, CardName.ACE) > 1) {
-            setup();
-            preparation();
-        }
     }
 
     public void giveThreeCardsToPlayers() {
@@ -147,13 +140,6 @@ public class GameManager {
         }
         return groupWithMaxPoints(points);
     }
-
-    private int calculateValueOfCards(List<Card> cards) {
-        int counter = 0;
-        for (Card card : cards) {
-            counter += card.getCardName().getValue();
-        }
-        return counter;
     }
 
     private void placeCardOnField(Card card) {
@@ -218,7 +204,6 @@ public class GameManager {
         }
     }
 
-    private boolean areAllZeroPoints(Map<Card, Integer> points) {
         int zeroCounter = 0;
         for (Map.Entry<Card, Integer> entry : points.entrySet()) {
             if (entry.getValue() == 0) {
@@ -236,13 +221,6 @@ public class GameManager {
             if (getTotalValueOf(field) + card.getCardName().getValue() <= 10) {
                 points.put(card, points.get(card) - 3);
             }
-            if (card.getCardName().equals(CardName.SEVEN) ||
-                    card.getCardName().equals(CardName.SIX) ||
-                    card.getCardName().equals(CardName.KING)) {
-                points.put(card, points.get(card) - 1);
-            }
-            if (card.getSeed().equals(Seed.MONEY)) {
-                points.put(card, points.get(card) - 1);
             }
         }
     }
@@ -265,8 +243,6 @@ public class GameManager {
     }
 
     private void calculatePlayerPoints(Player player) {
-        player.setRoundPoints(player.getBank().getResultPoints() + player.getTotalAdditionalPoints());
-        player.addGamePoints(player.getBank().getResultPoints() + player.getTotalAdditionalPoints());
     }
 
     // NEXT MATCH
@@ -366,13 +342,6 @@ public class GameManager {
         int max = Integer.MIN_VALUE;
         Card maxCard = null;
 
-        for (Map.Entry<Card, Integer> entry : points.entrySet()) {
-            if (entry.getValue() > max) {
-                max = entry.getValue();
-                maxCard = entry.getKey();
-            }
-        }
-        return maxCard;
     }
 
     private int cardByNameOccurs(List<Card> cards, CardName cardName) {
@@ -393,9 +362,6 @@ public class GameManager {
         return counter;
     }
 
-    private int getTotalValueOf(List<Card> cards) {
-        int sum = 0;
-        for (Card card : cards) {
             sum += card.cardName().getValue();
         }
         return sum;
@@ -405,9 +371,6 @@ public class GameManager {
         return humanPlayer.getHand().isEmpty() && cpuPlayer.getHand().isEmpty();
     }
 
-    private void addCardToPlayerBankOrMop(Player player, Card card) {
-        if (isLastTurnOfTheGame()) {
-            player.addToBank(card);
         } else {
             player.addToMop(card);
         }
@@ -431,15 +394,6 @@ public class GameManager {
             } else if (getTotalValueOf(hand) < 10) {
                 if (hand.get(0).cardName().equals(hand.get(1).getCardName()) ||
                         hand.get(1).cardName().equals(hand.get(2).getCardName()) ||
-                        hand.get(0).cardName().equals(hand.get(2).getCardName())) {
-                    player.addAdditionalPoints(3);
-                } else {
-                    player.addAdditionalPoints(2);
-                }
-            }
-        }
-    }
-
     // GETTERS
 
     public Player getHumanPlayer() {

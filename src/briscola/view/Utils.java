@@ -1,6 +1,6 @@
-package scopadasso.view;
+package briscola.view;
 
-import scopadasso.model.Card;
+import briscola.model.Card;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

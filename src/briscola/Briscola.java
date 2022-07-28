@@ -1,10 +1,10 @@
-package scopadasso;
+package briscola;
 
-import scopadasso.controller.Controller;
-import scopadasso.model.GameManager;
-import scopadasso.view.View;
+import briscola.controller.Controller;
+import briscola.model.GameManager;
+import briscola.view.View;
 
-public class ScopaDAsso {
+public class Briscola {
 
     /**
      * @param args the command line arguments

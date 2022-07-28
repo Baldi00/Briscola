@@ -1,4 +1,4 @@
-package scopadasso.view;
+package briscola.view;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

@@ -1,7 +1,7 @@
-package scopadasso.view;
+package briscola.view;
 
-import scopadasso.model.Card;
-import scopadasso.model.Deck;
+import briscola.model.Card;
+import briscola.model.Deck;
 
 import javax.swing.*;
 import java.awt.*;

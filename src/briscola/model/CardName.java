@@ -1,4 +1,4 @@
-package scopadasso.model;
+package briscola.model;
 
 public enum CardName {
     ACE(1),

@@ -1,6 +1,6 @@
-package scopadasso.controller;
+package briscola.controller;
 
-import scopadasso.model.GameManager;
+import briscola.model.GameManager;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

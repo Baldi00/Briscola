@@ -1,10 +1,10 @@
-package scopadasso.controller;
+package briscola.controller;
 
-import scopadasso.model.Card;
-import scopadasso.model.GameManager;
-import scopadasso.model.Player;
-import scopadasso.view.ResultsView;
-import scopadasso.view.View;
+import briscola.model.Card;
+import briscola.model.GameManager;
+import briscola.model.Player;
+import briscola.view.ResultsView;
+import briscola.view.View;
 
 import javax.swing.*;
 import java.util.List;

@@ -1,4 +1,4 @@
-package scopadasso.model;
+package briscola.model;
 
 import java.util.ArrayList;
 import java.util.Collections;

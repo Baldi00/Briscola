@@ -1,7 +1,7 @@
-package scopadasso.controller;
+package briscola.controller;
 
-import scopadasso.model.Card;
-import scopadasso.model.GameManager;
+import briscola.model.Card;
+import briscola.model.GameManager;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
