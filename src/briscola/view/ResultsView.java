@@ -23,9 +23,7 @@ public class ResultsView {
     public ResultsView() {
         //INITIALIZATIONS
         JFrame frame = new JFrame("Risultati");
-        JPanel mainPanel = new JPanel(new GridLayout(3, 1, 0, 0));
-        JPanel humanPanel = new JPanel(new BorderLayout());
-        JPanel cpuPanel = new JPanel(new BorderLayout());
+        JPanel mainPanel = new JPanel(new GridLayout(5, 1, 0, 0));
         humanPointsLabel = new JLabel("TU: 0 punti");
         cpuPointsLabel = new JLabel("CPU: 0 punti");
         winnerLabel = new JLabel();
@@ -41,18 +39,16 @@ public class ResultsView {
         humanPointsLabel.setFont(humanPointsLabel.getFont().deriveFont(20f));
         cpuPointsLabel.setFont(cpuPointsLabel.getFont().deriveFont(20f));
         winnerLabel.setFont(cpuPointsLabel.getFont().deriveFont(35f));
+        humanPointsLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        cpuPointsLabel.setHorizontalAlignment(SwingConstants.CENTER);
         winnerLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
         //ASSEMBLY
 
-        humanPanel.add(humanPointsLabel, BorderLayout.WEST);
-        humanPanel.add(humanCardsPanel, BorderLayout.CENTER);
-
-        cpuPanel.add(cpuPointsLabel, BorderLayout.WEST);
-        cpuPanel.add(cpuCardsPanel, BorderLayout.CENTER);
-
-        mainPanel.add(humanPanel);
-        mainPanel.add(cpuPanel);
+        mainPanel.add(humanPointsLabel);
+        mainPanel.add(humanCardsPanel);
+        mainPanel.add(cpuPointsLabel);
+        mainPanel.add(cpuCardsPanel);
         mainPanel.add(winnerLabel);
 
         frame.add(mainPanel);
@@ -74,10 +70,13 @@ public class ResultsView {
     public void setWinner(int humanPoints, int cpuPoints) {
         if(humanPoints > cpuPoints) {
             winnerLabel.setText("HAI VINTO QUESTO ROUND");
+            winnerLabel.setForeground(new Color(0, 138, 14));
         }else if (humanPoints < cpuPoints){
             winnerLabel.setText("HAI PERSO QUESTO ROUND");
+            winnerLabel.setForeground(Color.RED);
         }else {
             winnerLabel.setText("PAREGGIO");
+            winnerLabel.setForeground(Color.BLUE);
         }
     }
 
