@@ -22,8 +22,6 @@ public class ActionButtonListener implements ActionListener {
             gameManager.executeMove(gameManager.getCpuPlayer(), gameManager.getCpuPlayer().getLastPlayedCard());
             controller.updateView();
 
-            System.out.println("ACTIONBUTTON: " + gameManager.isGameOver());
-
             if(gameManager.isGameOver()){
                 gameManager.calculateMatchResults();
                 controller.showMatchResults();

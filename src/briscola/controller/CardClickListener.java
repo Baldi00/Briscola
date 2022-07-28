@@ -23,8 +23,6 @@ public class CardClickListener implements MouseListener {
             gameManager.humanPlayerPlayCard(card);
             controller.updateView();
 
-            System.out.println("CARDCLICK: " + gameManager.isGameOver());
-
             if(gameManager.isGameOver()){
                 gameManager.calculateMatchResults();
                 controller.showMatchResults();

@@ -10,7 +10,6 @@ public class GameManager {
     private Card trump;
     private Seed trumpSeed;
     private boolean hasCpuSelectedCard;
-    private Player lastPlayerWhoPickedCards;
     private Player currentPlayer;
     private Player oppositeToCurrentPlayer;
 
@@ -76,26 +75,6 @@ public class GameManager {
         if(currentPlayer == cpuPlayer && !isGameOver()) {
             cpuPlayerSelectNextCard();
         }
-
-//        boolean done = false;
-//        if (card.getCardName().equals(CardName.ACE) && cardByNameOccurs(field, CardName.ACE) == 0 && !field.isEmpty()) {
-//            grabAll(player);
-//            addCardToPlayerBankOrMop(player, card);
-//            done = true;
-//        }
-//        if (!done) {
-//            done = searchAndGrabSingleCard(player, card);
-//        }
-//        if (!done) {
-//            done = searchAndGrabMultipleCards(player, card);
-//        }
-//        if (!done) {
-//            placeCardOnField(card);
-//        } else {
-//            lastPlayerWhoPickedCards = player;
-//        }
-//
-//        hasCpuPlayedCard = false;
     }
 
     private void giveCardsFromDeckToPlayers() {
@@ -174,29 +153,10 @@ public class GameManager {
         humanPlayer.clear();
         cpuPlayer.clear();
         deck = new Deck();
-        oppositeToCurrentPlayer = currentPlayer;
-        currentPlayer = currentPlayer == humanPlayer ? cpuPlayer : humanPlayer;
+
     }
 
     // UTILS
-
-    private int cardByNameOccurs(List<Card> cards, CardName cardName) {
-        int counter = 0;
-        for (Seed seed : Seed.values()) {
-            if (cards.contains(new Card(cardName, seed)))
-                counter++;
-        }
-        return counter;
-    }
-
-    private int cardBySeedOccurs(List<Card> cards, Seed seed) {
-        int counter = 0;
-        for (CardName cardName : CardName.values()) {
-            if (cards.contains(new Card(cardName, seed)))
-                counter++;
-        }
-        return counter;
-    }
 
     public static List<Card> getSortedCards(List<Card> cards) {
         List<Card> sorted = new ArrayList<>(cards);
@@ -234,7 +194,4 @@ public class GameManager {
         return trump;
     }
 
-    public void setHasCpuSelectedCard(boolean hasCpuSelectedCard) {
-        this.hasCpuSelectedCard = hasCpuSelectedCard;
-    }
 }
