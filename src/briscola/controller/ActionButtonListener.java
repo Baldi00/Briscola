@@ -30,6 +30,9 @@ public class ActionButtonListener implements ActionListener {
                 controller.setActionButton("nextGame", "Prossima Partita", true);
             }
         } else if (action.equals("nextGame")) {
+            gameManager.nextMatch();
+            gameManager.preparation();
+            controller.setActionButton("proceed", "Prosegui", false);
             controller.updateView();
         }
     }
