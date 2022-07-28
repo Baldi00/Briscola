@@ -154,7 +154,7 @@ public class GameManager {
     // GAME OVER AND MATCH RESULTS
 
     public boolean isGameOver() {
-        return deck.size() == 0 && humanPlayer.getHand().isEmpty() && cpuPlayer.getHand().isEmpty();
+        return deck.size() == 0 && humanPlayer.getHand().isEmpty() && cpuPlayer.getHand().isEmpty() && !hasCpuSelectedCard;
     }
 
     public void calculateMatchResults() {
