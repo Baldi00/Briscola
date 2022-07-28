@@ -59,9 +59,9 @@ public class Controller {
         Player humanPlayer = gameManager.getHumanPlayer();
         Player cpuPlayer = gameManager.getCpuPlayer();
         resultsView.setHumanPoints(humanPlayer.getRoundPoints());
-        resultsView.setHumanCards(humanPlayer.getBankCards());
+        resultsView.setHumanCards(GameManager.getSortedCards(humanPlayer.getBankCards()));
         resultsView.setCpuPoints(cpuPlayer.getRoundPoints());
-        resultsView.setCpuCards(cpuPlayer.getBankCards());
+        resultsView.setCpuCards(GameManager.getSortedCards(cpuPlayer.getBankCards()));
         resultsView.setWinner(humanPlayer.getRoundPoints(), cpuPlayer.getRoundPoints());
     }
 

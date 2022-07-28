@@ -198,6 +198,12 @@ public class GameManager {
         return counter;
     }
 
+    public static List<Card> getSortedCards(List<Card> cards) {
+        List<Card> sorted = new ArrayList<>(cards);
+        Collections.sort(sorted);
+        return sorted;
+    }
+
     // GETTERS
 
     public Player getHumanPlayer() {
