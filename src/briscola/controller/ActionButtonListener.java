@@ -29,28 +29,7 @@ public class ActionButtonListener implements ActionListener {
                 controller.showMatchResults();
                 controller.setActionButton("nextGame", "Prossima Partita", true);
             }
-
-//            if (gameManager.isTurnOver()) {
-//                if (gameManager.isGameOver()) {
-//                    gameManager.calculateMatchResults();
-//                    controller.showMatchResults();
-//                } else {
-//                    gameManager.giveThreeCardsToPlayers();
-//                }
-//            }
-//
-//            if(gameManager.isLastTurnOfTheGame()){
-//                controller.setActionButton("nextGame", "Prossima Partita", true);
-//            }
         } else if (action.equals("nextGame")) {
-//            gameManager.nextMatch();
-//            gameManager.preparation();
-//            controller.setActionButton("proceed", "Prosegui", false);
-//
-//            if(gameManager.getCurrentPlayer() == gameManager.getCpuPlayer()) {
-//                gameManager.cpuPlayerPlayCard();
-//            }
-
             controller.updateView();
         }
     }
