@@ -43,18 +43,6 @@ public class Player {
         return hand;
     }
 
-    public List<Card> getBankWithoutMop() {
-        return bank.getBankWithoutMop();
-    }
-
-    public List<Card> getMop() {
-        return bank.getMop();
-    }
-
-    public void addToMop(Card card) {
-        bank.addToMop(card);
-    }
-
     public void addToBank(Card card) {
         bank.addToBank(card);
     }
